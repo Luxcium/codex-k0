@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run markdownlint.sh",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "./scripts/markdownlint.sh",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Run markdownlint.sh --check",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "./scripts/markdownlint.sh --check",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Run markdownlint.sh --fix",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "./scripts/markdownlint.sh --fix",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Run env-info.sh",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "./scripts/env-info.sh",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

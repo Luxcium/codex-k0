@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "github.copilot",
+        "github.copilot-chat",
+        "davidanson.vscode-markdownlint",
+        "foxundermoon.shell-format",
+        "eamodio.gitlens",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "bierner.markdown-yaml-preamble",
+        "marvhen.reflow-markdown",
+        "gruntfuggly.todo-tree",
+        "pkief.material-icon-theme"
+    ]
+}

@@ -19,8 +19,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# IDE and editor files
-.vscode/
+# IDE and editor files (keep VS Code workspace settings)
 .idea/
 *.swp
 *.swo

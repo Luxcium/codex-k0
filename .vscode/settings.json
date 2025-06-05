@@ -1,0 +1,84 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": "explicit"
+    },
+    "files.associations": {
+        "*.md": "markdown",
+        ".clinerules": "yaml",
+        ".markdownlint*": "json",
+        ".gitignore": "ignore"
+    },
+    "markdown.validate.enabled": true,
+    "markdownlint.config": {
+        "extends": "./.markdownlint.json"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/*.log": true,
+        ".markdownlint.log": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/*.log": true,
+        ".markdownlint.log": true
+    },
+    "editor.rulers": [
+        120
+    ],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "[markdown]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 120,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
+    },
+    "[bash]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/bin/bash",
+            "args": [
+                "-l"
+            ]
+        }
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": true,
+        "plaintext": false
+    },
+    "workbench.editorAssociations": {
+        "*.md": "default"
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.md": "${capture}.log, ${capture}.bak, ${capture}.tmp",
+        ".markdownlint.json": ".markdownlint.log, .markdownlintignore",
+        "README.md": "CHANGELOG.md, LICENSE.md, CONTRIBUTING.md",
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml"
+    },
+    "problems.decorations.enabled": true,
+    "editor.lightbulb.enabled": "on",
+    "editor.suggest.showStatusBar": true,
+    "breadcrumbs.enabled": true,
+    "editor.minimap.enabled": false,
+    "workbench.tree.indent": 20,
+    "workbench.list.openMode": "singleClick"
+}
