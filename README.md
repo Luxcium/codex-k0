@@ -119,6 +119,10 @@ flowchart TD
 - Multiple MCP servers for GitHub, browser automation, git operations
 - File management and code analysis tools
 - Web fetching and search capabilities
+## Utility Scripts
+- `scripts/env-info.sh` detects runtime details such as container status and OS information.
+- `scripts/markdownlint.sh` runs markdownlint via `npx` to enforce consistent Markdown style.
+See [scripts/README.md](scripts/README.md) for more details.
 
 ## Project Status
 
