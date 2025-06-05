@@ -1,0 +1,29 @@
+[2025-06-05 16:38:22] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:38:23] Found 9 Markdown files to lint
+[ERROR] [2025-06-05 16:38:23] Markdown linting found issues (exit code: 123)
+[ERROR] [2025-06-05 16:38:23] Script failed with exit code 123
+[2025-06-05 16:38:54] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:38:55] Found 9 Markdown files to lint
+[2025-06-05 16:38:55] Markdown linting completed with auto-fixes applied
+[ERROR] [2025-06-05 16:38:55] Script failed with exit code 123
+[2025-06-05 16:39:09] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:39:10] Found 9 Markdown files to lint
+[ERROR] [2025-06-05 16:39:11] Markdown linting found issues (exit code: 123)
+[ERROR] [2025-06-05 16:39:11] Script failed with exit code 123
+[2025-06-05 16:39:19] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:39:19] Found 9 Markdown files to lint
+[2025-06-05 16:39:20] Markdown linting completed with auto-fixes applied
+[ERROR] [2025-06-05 16:39:20] Script failed with exit code 123
+[2025-06-05 16:39:23] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:39:23] Found 9 Markdown files to lint
+[2025-06-05 16:39:24] Markdown linting completed with auto-fixes applied
+[ERROR] [2025-06-05 16:39:24] Script failed with exit code 123
+[2025-06-05 16:40:19] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:40:38] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:40:39] Linting 1 specified files
+[2025-06-05 16:40:39] Markdown linting completed with auto-fixes applied
+[ERROR] [2025-06-05 16:40:39] Script failed with exit code 1
+[2025-06-05 16:41:01] Starting markdownlint.sh v2.0.0
+[2025-06-05 16:41:01] Found 9 Markdown files to lint
+[ERROR] [2025-06-05 16:41:02] Markdown linting found issues (exit code: 123)
+[ERROR] [2025-06-05 16:41:02] Script failed with exit code 123

@@ -35,6 +35,8 @@ OS Release: ${OS_RELEASE:-unknown}
 User: $(whoami)
 Home Dir: $HOME
 PWD: $(pwd)
+More detailed hostname information (for systemd-based systems):
+$(hostnamectl)
 INFO
 
 

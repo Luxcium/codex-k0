@@ -1,0 +1,10 @@
+# Ignore patterns for markdownlint
+node_modules/
+.git/
+.vscode/
+dist/
+build/
+.cache/
+*.min.md
+**/CHANGELOG.md
+**/LICENSE.md
