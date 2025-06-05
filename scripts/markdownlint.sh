@@ -3,7 +3,7 @@
 # Usage: ./markdownlint.sh [files]
 
 set -e
-
+set -o pipefail
 if ! command -v npx >/dev/null 2>&1; then
   echo "npx is required but not installed" >&2
   exit 1
