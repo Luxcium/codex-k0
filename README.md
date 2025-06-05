@@ -23,11 +23,12 @@ The Memory Bank follows a hierarchical structure where each file serves a specif
 ## Quick Start for AI Agents
 
 ### Mandatory First Steps
-1. **Read ALL Memory Bank files** in this order:
+1. **Read AGENTS.md** to load agent lifecycle and memory protocols
+2. **Read ALL Memory Bank files** in this order:
    - `projectbrief.md` → `productContext.md`, `systemPatterns.md`, `techContext.md` → `activeContext.md` → `progress.md`
-2. **Identify [TO BE DEFINED] placeholders** that need completion
-3. **Review .clinerules** for project-specific patterns and intelligence
-4. **Update activeContext.md** before starting any new work
+3. **Identify [TO BE DEFINED] placeholders** that need completion
+4. **Review .clinerules** for project-specific patterns and intelligence
+5. **Update activeContext.md** before starting any new work
 
 ### Session Workflow
 ```mermaid
@@ -82,6 +83,11 @@ flowchart TD
 - Project-specific AI agent intelligence
 - Memory Bank workflow protocols
 - Learning patterns and critical success factors
+
+**📄 AGENTS.md**
+- Guidelines for AI agents and human collaborators
+- Session lifecycle events and state management
+- Self-evaluation loops and memory persistence protocols
 
 ## Template Features
 
