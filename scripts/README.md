@@ -75,7 +75,7 @@ The script uses `.markdownlint.json` for configuration and `.markdownlintignore`
 
 **Ignore Patterns** (`.markdownlintignore`):
 
-```
+```text
 node_modules/
 .git/
 .vscode/

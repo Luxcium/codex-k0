@@ -8,3 +8,6 @@ build/
 *.min.md
 **/CHANGELOG.md
 **/LICENSE.md
+
+# Memory bank files with long descriptive subtitles
+memory-bank/

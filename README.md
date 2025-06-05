@@ -1,16 +1,20 @@
 # Project Codex-K0
 
-> **AI Agent Memory Bank System** - A comprehensive documentation framework designed for seamless AI agent continuity and project development.
+> **AI Agent Memory Bank System** - A comprehensive documentation framework designed for seamless AI agent continuity
+> and project development.
 
 ## Overview
 
-This project implements a complete Memory Bank system that enables AI agents to maintain perfect context continuity across sessions. The system is designed to be self-instructive, comprehensive, and immediately actionable for any AI agent that needs to pick up work on a project.
+This project implements a complete Memory Bank system that enables AI agents to maintain perfect context continuity across
+sessions. The system is designed to be self-instructive, comprehensive, and immediately actionable for any AI agent that
+needs to pick up work on a project.
 
 ## Memory Bank Architecture
 
-The Memory Bank follows a hierarchical structure where each file serves a specific purpose and references others to maintain consistency without duplication:
+The Memory Bank follows a hierarchical structure where each file serves a specific purpose and references others to
+maintain consistency without duplication:
 
-```
+```text
 📁 memory-bank/
 ├── 📄 projectbrief.md      (Foundation - project scope and objectives)
 ├── 📄 productContext.md    (Purpose - why the project exists)
@@ -208,7 +212,8 @@ The `scripts/` directory contains production-ready automation tools:
 
 ### env-info.sh - Environment Detection
 
-`env-info.sh` detects runtime details such as container status, OS information, and environment metadata. Useful for troubleshooting and CI/CD context validation.
+`env-info.sh` detects runtime details such as container status, OS information, and environment metadata. Useful for
+troubleshooting and CI/CD context validation.
 
 **See [scripts/README.md](scripts/README.md) for complete documentation.**
 
@@ -279,4 +284,5 @@ This Memory Bank template system is designed for maximum reusability and adaptat
 
 ---
 
-**For AI Agents:** This README provides project overview, but you MUST read all Memory Bank files for complete context. The Memory Bank is your authoritative source for project understanding and work continuation.
+**For AI Agents:** This README provides project overview, but you MUST read all Memory Bank files for complete context.
+The Memory Bank is your authoritative source for project understanding and work continuation.
