@@ -124,7 +124,8 @@ The script includes comprehensive error handling:
 
 #### Logging
 
-All operations are logged to `.markdownlint.log` in the project root:
+All operations are logged to `.markdownlint.log` in the project root. The log file is automatically excluded from git
+tracking via `.gitignore`:
 
 ```bash
 # View recent logs
@@ -133,6 +134,8 @@ tail -f .markdownlint.log
 # Search for errors
 grep ERROR .markdownlint.log
 ```
+
+**Note**: Log files are automatically gitignored and will not be committed to the repository.
 
 #### CI/CD Integration
 

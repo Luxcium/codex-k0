@@ -97,6 +97,12 @@ flowchart TD
 - Memory Bank workflow protocols
 - Learning patterns and critical success factors
 
+**📄 .gitignore**
+
+- Excludes log files (`.markdownlint.log`, `*.log`)
+- Ignores common build artifacts and dependencies
+- Prevents tracking of temporary and generated files
+
 **📄 AGENTS.md**
 
 - Guidelines for AI agents and human collaborators
