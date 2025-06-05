@@ -1,0 +1,35 @@
+{
+  "name": "vscode-copilot-config",
+  "version": "1.0.0",
+  "description": "VS Code GitHub Copilot configuration with Conventional Commits and emoji support",
+  "main": "scripts/validate-config.js",
+  "scripts": {
+    "validate": "node scripts/validate-config.js",
+    "check": "node scripts/validate-config.js",
+    "test-config": "node scripts/validate-config.js"
+  },
+  "keywords": [
+    "vscode",
+    "github-copilot",
+    "conventional-commits",
+    "emoji",
+    "configuration",
+    "development-tools"
+  ],
+  "author": "VS Code Copilot Configuration Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "bin": {
+    "validate-copilot-config": "./scripts/validate-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/vscode-copilot-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/vscode-copilot-config/issues"
+  },
+  "homepage": "https://github.com/your-org/vscode-copilot-config#readme"
+}

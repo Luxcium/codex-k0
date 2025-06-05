@@ -1,84 +1,261 @@
 {
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.markdownlint": "explicit"
-    },
-    "files.associations": {
-        "*.md": "markdown",
-        ".clinerules": "yaml",
-        ".markdownlint*": "json",
-        ".gitignore": "ignore"
-    },
-    "markdown.validate.enabled": true,
-    "markdownlint.config": {
-        "extends": "./.markdownlint.json"
-    },
-    "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/node_modules": true,
-        "**/*.log": true,
-        ".markdownlint.log": true
-    },
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/*.log": true,
-        ".markdownlint.log": true
-    },
-    "editor.rulers": [
-        120
+    // =====================================================
+    // GitHub Copilot Chat Configuration
+    // =====================================================
+    // Enable prompt and instruction files support
+    "chat.promptFiles": true,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    // Set locations for instruction and prompt files
+    "chat.instructionsFilesLocations": [
+        "./.github/instructions"
     ],
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
+    "chat.promptFilesLocations": [
+        "./.github/prompts"
+    ],
+    // =====================================================
+    // Agent-Specific Instruction Files
+    // =====================================================
+    // Code Generation Instructions
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "file": ".github/instructions/code-generation.instructions.md"
+        }
+    ],
+    // Test Generation Instructions  
+    "github.copilot.chat.testGeneration.instructions": [
+        {
+            "file": ".github/instructions/test-generation.instructions.md"
+        }
+    ],
+    // Code Review Instructions
+    "github.copilot.chat.reviewSelection.enabled": true,
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "file": ".github/instructions/code-review.instructions.md"
+        }
+    ],
+    // Commit Message Generation Instructions (with Conventional Commits + Emojis)
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "file": ".github/instructions/commit-message.instructions.md"
+        }
+    ],
+    // Pull Request Description Generation Instructions
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "file": ".github/instructions/pr-description.instructions.md"
+        }
+    ],
+    // =====================================================
+    // General Copilot Chat Settings
+    // =====================================================
+    // Enable Copilot Chat agents
+    "chat.agent.enabled": true,
+    "chat.agent.maxRequests": 15,
+    // =====================================================
+    // Editor and Formatting Settings
+    // =====================================================
+    // TypeScript/JavaScript formatting
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    // Indentation settings (matching project conventions)
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    // Line endings and encoding
+    "files.eol": "\n",
+    "files.encoding": "utf8",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    // =====================================================
+    // Language-Specific Settings
+    // =====================================================
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
     "[markdown]": {
-        "editor.wordWrap": "wordWrapColumn",
-        "editor.wordWrapColumn": 120,
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "editor.tabSize": 2,
+        "editor.wordWrap": "on",
         "editor.quickSuggestions": {
             "comments": "off",
             "strings": "off",
             "other": "off"
         }
     },
-    "[bash]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format",
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2
-    },
-    "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format",
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2
-    },
+    // =====================================================
+    // Git and Version Control Settings
+    // =====================================================
+    // Git configuration
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "git.defaultCloneDirectory": "../",
+    // GitLens configuration (if installed)
+    "gitlens.codeLens.enabled": true,
+    "gitlens.currentLine.enabled": true,
+    "gitlens.hovers.enabled": true,
+    // =====================================================
+    // Terminal and Shell Settings
+    // =====================================================
     "terminal.integrated.defaultProfile.linux": "bash",
-    "terminal.integrated.profiles.linux": {
-        "bash": {
-            "path": "/bin/bash",
-            "args": [
-                "-l"
-            ]
-        }
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.cursorBlinking": true,
+    // =====================================================
+    // File Explorer and Workspace Settings
+    // =====================================================
+    // File associations
+    "files.associations": {
+        "*.md": "markdown",
+        "*.json": "jsonc",
+        ".clinerules": "plaintext",
+        ".gitignore": "ignore",
+        ".markdownlintrc": "json",
+        ".prettierrc": "json"
     },
-    "github.copilot.enable": {
-        "*": true,
-        "markdown": true,
-        "plaintext": false
+    // Files to exclude from explorer and search
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.log": true,
+        "**/coverage": true
     },
-    "workbench.editorAssociations": {
-        "*.md": "default"
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/coverage": true,
+        "**/*.min.js": true,
+        "**/*.min.css": true
     },
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-        "*.md": "${capture}.log, ${capture}.bak, ${capture}.tmp",
-        ".markdownlint.json": ".markdownlint.log, .markdownlintignore",
-        "README.md": "CHANGELOG.md, LICENSE.md, CONTRIBUTING.md",
-        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml"
+    // =====================================================
+    // Extension-Specific Settings
+    // =====================================================
+    // ESLint configuration
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "eslint.format.enable": true,
+    // Prettier configuration
+    "prettier.enable": true,
+    "prettier.requireConfig": true,
+    "prettier.useEditorConfig": false,
+    // TypeScript configuration
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.suggest.autoImports": true,
+    "typescript.preferences.renameShorthandProperties": false,
+    "typescript.suggest.completeFunctionCalls": true,
+    // IntelliSense configuration
+    "editor.suggestSelection": "first",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    // =====================================================
+    // Memory Bank Integration Settings
+    // =====================================================
+    // Auto-save to help maintain memory bank files
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 2000,
+    // Highlight memory bank files in explorer
+    "explorer.decorations.badges": true,
+    "explorer.decorations.colors": true,
+    // =====================================================
+    // Development Environment Settings
+    // =====================================================
+    // Enable bracket pair colorization
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    // Enable minimap for large files
+    "editor.minimap.enabled": true,
+    "editor.minimap.maxColumn": 120,
+    // Line numbers and ruler
+    "editor.lineNumbers": "on",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    // Word wrap settings
+    "editor.wordWrap": "off",
+    "editor.wordWrapColumn": 120,
+    // Whitespace rendering
+    "editor.renderWhitespace": "boundary",
+    "editor.renderControlCharacters": true,
+    // =====================================================
+    // Performance and Resource Settings
+    // =====================================================
+    // File watcher settings for large projects
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/coverage/**": true
     },
-    "problems.decorations.enabled": true,
-    "editor.lightbulb.enabled": "on",
-    "editor.suggest.showStatusBar": true,
-    "breadcrumbs.enabled": true,
-    "editor.minimap.enabled": false,
-    "workbench.tree.indent": 20,
-    "workbench.list.openMode": "singleClick"
+    // Memory settings
+    "typescript.tsc.autoDetect": "on",
+    "javascript.suggest.autoImports": true,
+    // =====================================================
+    // Security and Privacy Settings
+    // =====================================================
+    // Telemetry and data collection
+    "telemetry.telemetryLevel": "error",
+    // Extension recommendations
+    "extensions.ignoreRecommendations": false,
+    "extensions.showRecommendationsOnlyOnDemand": false,
+    // =====================================================
+    // Project-Specific Overrides
+    // =====================================================
+    // Conventional Commits enforcement
+    "conventionalCommits.scopes": [
+        "ui",
+        "api",
+        "auth",
+        "db",
+        "config",
+        "deps",
+        "ci",
+        "docs",
+        "test",
+        "build",
+        "deploy"
+    ],
+    // Project structure awareness
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "javascript.preferences.includePackageJsonAutoImports": "auto"
 }

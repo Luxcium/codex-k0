@@ -1,294 +1,285 @@
-# Project Codex-K0
+# VS Code GitHub Copilot Configuration with Conventional Commits & Emojis
 
-> **AI Agent Memory Bank System** - A comprehensive documentation framework designed for seamless AI agent continuity
-> and project development.
+This project provides a complete VS Code configuration for GitHub Copilot Chat that enforces Conventional Commits v1.0.0 with emoji prefixes and provides comprehensive instruction files for all Copilot agents.
 
-## Overview
+## 🚀 Features
 
-This project implements a complete Memory Bank system that enables AI agents to maintain perfect context continuity across
-sessions. The system is designed to be self-instructive, comprehensive, and immediately actionable for any AI agent that
-needs to pick up work on a project.
+- **🎯 Commit Message Generation**: Automatic generation of Conventional Commits with emoji prefixes
+- **💻 Code Generation**: TypeScript/JavaScript best practices and project conventions
+- **🧪 Test Generation**: Jest and React Testing Library patterns
+- **👀 Code Review**: Comprehensive review guidelines covering security, performance, and maintainability
+- **📝 PR Descriptions**: Structured pull request templates with emoji titles
 
-## Memory Bank Architecture
+## 📋 Table of Contents
 
-The Memory Bank follows a hierarchical structure where each file serves a specific purpose and references others to
-maintain consistency without duplication:
+- [Quick Start](#quick-start)
+- [Configuration Files](#configuration-files)
+- [Emoji Convention](#emoji-convention)
+- [Usage Examples](#usage-examples)
+- [Instruction Files](#instruction-files)
+- [VS Code Settings](#vs-code-settings)
+- [Memory Bank Integration](#memory-bank-integration)
+- [Troubleshooting](#troubleshooting)
 
-```text
-📁 memory-bank/
-├── 📄 projectbrief.md      (Foundation - project scope and objectives)
-├── 📄 productContext.md    (Purpose - why the project exists)
-├── 📄 systemPatterns.md    (Architecture - how it's built)
-├── 📄 techContext.md       (Implementation - technologies used)
-├── 📄 activeContext.md     (Current - immediate work state)
-└── 📄 progress.md          (Evolution - what works, what's left)
+## 🏃 Quick Start
+
+1. **Prerequisites**:
+   - VS Code 1.99+
+   - GitHub Copilot Chat extension installed and configured
+   - Git repository initialized
+
+2. **Copy Configuration Files**:
+   ```bash
+   # Copy the entire .github/instructions/ directory to your project
+   cp -r .github/instructions /path/to/your/project/.github/
+
+   # Copy VS Code settings
+   cp .vscode/settings.json /path/to/your/project/.vscode/
+   ```
+
+3. **Reload VS Code**:
+   - Restart VS Code or run "Developer: Reload Window" from Command Palette
+   - Verify Copilot Chat is working with `Ctrl+Shift+P` → "Copilot Chat: Open Chat"
+
+4. **Test the Configuration**:
+   - Try generating a commit message: Ask Copilot to "Generate a commit message"
+   - Try code generation: Ask Copilot to "Create a React component"
+   - The responses should follow the defined patterns
+
+## 📁 Configuration Files
+
+```
+.github/instructions/
+├── commit-message.instructions.md      # Conventional Commits + Emojis
+├── code-generation.instructions.md     # TypeScript/React best practices
+├── test-generation.instructions.md     # Jest testing patterns
+├── code-review.instructions.md         # Review guidelines
+└── pr-description.instructions.md      # PR template structure
+
+.vscode/
+└── settings.json                       # Complete VS Code configuration
 ```
 
-## Quick Start for AI Agents
+## 🎨 Emoji Convention
 
-### Mandatory First Steps
+Our commit message format follows Conventional Commits v1.0.0 with emoji prefixes:
 
-1. **Read AGENTS.md** to load agent lifecycle and memory protocols
-2. **Read ALL Memory Bank files** in this order:
-   - `projectbrief.md` → `productContext.md`, `systemPatterns.md`, `techContext.md` → `activeContext.md` → `progress.md`
-3. **Identify [TO BE DEFINED] placeholders** that need completion
-4. **Review .clinerules** for project-specific patterns and intelligence
-5. **Update activeContext.md** before starting any new work
+| Emoji | Type      | Description                             | Example                                    |
+|-------|-----------|----------------------------------------|-------------------------------------------|
+| 🎉    | feat      | A new feature                          | `🎉feat(ui): add modal component`         |
+| 🐛    | fix       | A bug fix                              | `🐛fix(auth): handle token expiration`    |
+| 📝    | docs      | Documentation only changes            | `📝docs: update API documentation`        |
+| 💄    | style     | Code style/formatting (no logic)      | `💄style: fix indentation in utils`       |
+| 🎨    | refactor  | Code refactoring                       | `🎨refactor(api): restructure endpoints`   |
+| 🚀    | perf      | Performance improvement                | `🚀perf(db): optimize user queries`       |
+| ✅    | test      | Adding/updating tests                  | `✅test: add user service unit tests`     |
+| 🔧    | chore     | Maintenance tasks                      | `🔧chore: update dependencies`            |
+| 📦    | build     | Build system changes                   | `📦build: configure webpack for prod`     |
+| 🧹    | clean     | Code cleanup                           | `🧹clean: remove deprecated functions`    |
 
-### Session Workflow
+### Commit Message Structure
 
-```mermaid
-flowchart TD
-    Start[New Session] --> Read[Read All Memory Bank Files]
-    Read --> Check{Project Defined?}
-    Check -->|No| Define[Define Project Scope]
-    Check -->|Yes| Work[Execute Current Tasks]
-    Define --> Update1[Update Memory Bank]
-    Work --> Update2[Document Changes]
-    Update1 --> End[Session Complete]
-    Update2 --> End
+```
+<emoji><type>(<scope>): <short description>
+
+<body>     # optional - explain "why" and "what" beyond the title
+<footer>   # optional - breaking changes, issues closed, etc.
 ```
 
-## File Purposes
+## 💡 Usage Examples
 
-### Core Memory Bank Files
+### Generating Commit Messages
 
-**📄 projectbrief.md**
+1. Stage your changes: `git add .`
+2. Open Copilot Chat (`Ctrl+Shift+P` → "Copilot Chat: Open Chat")
+3. Ask: "Generate a commit message for my staged changes"
+4. Copilot will provide a message like: `🎉feat(ui): add user profile modal component`
 
-- Foundation document that shapes all others
-- Defines project scope, objectives, and constraints
-- Source of truth for what this project accomplishes
+### Code Generation
 
-**📄 productContext.md**
-
-- Why this project exists and what problems it solves
-- User experience goals and success metrics
-- Product vision and value proposition
-
-**📄 systemPatterns.md**
-
-- System architecture and design patterns
-- Component relationships and technical decisions
-- Critical implementation paths
-
-**📄 techContext.md**
-
-- Technology stack and development environment
-- Dependencies, constraints, and tool usage patterns
-- Setup instructions and configuration details
-
-**📄 activeContext.md**
-
-- Current work focus and immediate next steps
-- Recent changes and active decisions
-- Bridge between planning and implementation
-
-**📄 progress.md**
-
-- What's working vs. what needs work
-- Project evolution and status tracking
-- Historical context for decision making
-
-### Configuration Files
-
-**📄 .clinerules**
-
-- Project-specific AI agent intelligence
-- Memory Bank workflow protocols
-- Learning patterns and critical success factors
-
-**📄 .gitignore**
-
-- Excludes log files (`.markdownlint.log`, `*.log`)
-- Ignores common build artifacts and dependencies
-- Prevents tracking of temporary and generated files
-
-**📄 AGENTS.md**
-
-- Guidelines for AI agents and human collaborators
-- Session lifecycle events and state management
-- Self-evaluation loops and memory persistence protocols
-
-## Template Features
-
-### Self-Instructive Design
-
-- Every file includes "Instructions for AI Agents" sections
-- Update triggers explicitly documented
-- Cross-references maintain consistency
-- No external guidance required
-
-### Placeholder System
-
-- `[TO BE DEFINED]` marks incomplete information
-- Easy identification of what needs completion
-- Systematic approach to project definition
-
-### Quality Assurance
-
-- Cross-reference validation between files
-- Version control integration assumed
-- Hard enforcement of Memory Bank workflows
-
-## Development Environment
-
-**Current Context:**
-
-- Working Directory: `/projects/annexes/codex-k0`
-- Operating System: Linux 6.14
-- Default Shell: `/bin/bash`
-- Home Directory: `/home/luxcium`
-
-**Available Tools:**
-
-- Multiple MCP servers for GitHub, browser automation, git operations
-- File management and code analysis tools
-- Web fetching and search capabilities
-
-## System Requirements
-
-### Minimum Requirements
-
-**Core System:**
-
-- **Operating System**: Linux (Ubuntu 18.04+, CentOS 7+, Arch), macOS 10.15+, or Windows 10+ with WSL2
-- **Shell**: Bash 4.0 or higher
-- **Memory**: 512MB RAM minimum, 2GB recommended
-- **Storage**: 100MB free space for dependencies
-- **Network**: Internet connection for initial dependency installation
-
-**Runtime Dependencies** (Auto-installed):
-
-- **Node.js**: Version 14 LTS or higher
-- **npm**: Version 6 or higher (included with Node.js)
-- **curl**: For dependency downloads (usually pre-installed)
-
-**Optional Tools:**
-
-- **Git**: Version control (recommended for projects)
-- **jq**: JSON processing (for config validation)
-- **sudo**: For system-wide package installation
-
-### Supported Platforms
-
-| Platform | Status | Auto-Install | Package Manager |
-|----------|--------|--------------|-----------------|
-| Ubuntu/Debian | ✅ Full Support | Yes | apt-get |
-| CentOS/RHEL 7+ | ✅ Full Support | Yes | yum |
-| Arch Linux | ✅ Full Support | Yes | pacman |
-| macOS 10.15+ | ✅ Full Support | Yes | brew |
-| Windows WSL2 | ✅ Full Support | Yes | apt-get |
-| Windows MinGW | ⚠️ Limited | Manual | n/a |
-
-## Utility Scripts
-
-The `scripts/` directory contains production-ready automation tools:
-
-### markdownlint.sh - Production Markdown Linter
-
-**Features:**
-
-- **Battle-tested**: Comprehensive error handling and cross-platform support
-- **Fully Automated**: Auto-installs Node.js and dependencies without prompts
-- **Headless Ready**: Perfect for CI/CD pipelines and automated workflows
-- **Configurable**: Supports custom configuration files and ignore patterns
-- **Self-Healing**: Auto-fixes common markdown issues where possible
-
-**Usage:**
-
-```bash
-# Lint all markdown files in project
-./scripts/markdownlint.sh
-
-# Lint specific files  
-./scripts/markdownlint.sh README.md docs/*.md
-
-# Auto-fix issues where possible
-./scripts/markdownlint.sh --fix
-
-# Silent mode for CI/CD
-./scripts/markdownlint.sh --silent --check
+Ask Copilot Chat:
+```
+Create a React component for a user profile card with TypeScript
 ```
 
-**Configuration:**
+Response will follow the code-generation instructions:
+- TypeScript interfaces defined
+- Proper naming conventions (PascalCase for components)
+- Error handling with try/catch
+- JSDoc comments for public APIs
 
-- Config: `.markdownlint.json` (auto-created with sensible defaults)
-- Ignores: `.markdownlintignore` (excludes common build/dependency folders)
-- Logging: `.markdownlint.log` (detailed operation logs)
+### Test Generation
 
-### env-info.sh - Environment Detection
+Ask Copilot Chat:
+```
+Generate tests for the UserService class
+```
 
-`env-info.sh` detects runtime details such as container status, OS information, and environment metadata. Useful for
-troubleshooting and CI/CD context validation.
+Response will follow the test-generation instructions:
+- Jest test structure with describe/it blocks
+- AAA pattern (Arrange, Act, Assert)
+- Proper mocking with jest.mock()
+- Both success and error scenarios
 
-**See [scripts/README.md](scripts/README.md) for complete documentation.**
+### Code Review
 
-## Project Status
+Select code and run:
+- `Ctrl+Shift+P` → "Copilot: Review Selection"
 
-**Current Phase:** Memory Bank Template System Complete
+Review will cover:
+- Security vulnerabilities
+- Performance issues
+- Readability improvements
+- Best practice recommendations
 
-**Ready for:**
+### PR Descriptions
 
-- Project scope definition and planning
-- Technical implementation using Memory Bank workflows
-- Real-world testing of AI agent continuity
+Ask Copilot Chat:
+```
+Generate a pull request description for my changes
+```
 
-**Next Steps:**
+Response will include:
+- Emoji-prefixed title following Conventional Commits
+- Structured description with all required sections
+- Testing instructions
+- Breaking changes documentation
 
-1. Define actual project objectives (replace template placeholders)
-2. Use Memory Bank system for concrete development work
-3. Test and refine Memory Bank effectiveness
+## 📄 Instruction Files
 
-## Usage Guidelines
+### `.github/instructions/commit-message.instructions.md`
+- Emoji → type mappings
+- Conventional Commits v1.0.0 format
+- Scope guidelines (ui, api, auth, etc.)
+- Examples for different commit types
 
-### For New Projects
+### `.github/instructions/code-generation.instructions.md`
+- TypeScript/JavaScript conventions
+- React best practices
+- Error handling patterns
+- Security considerations
+- Memory bank integration guidelines
 
-1. Clone this repository structure
-2. Update `projectbrief.md` with actual project scope
-3. Replace all `[TO BE DEFINED]` placeholders with real information
-4. Follow Memory Bank workflows for all development work
+### `.github/instructions/test-generation.instructions.md`
+- Jest testing framework setup
+- React Testing Library patterns
+- Mocking strategies
+- Coverage requirements
+- Performance testing guidelines
 
-### For AI Agents
+### `.github/instructions/code-review.instructions.md`
+- Security best practices
+- Performance considerations
+- Code quality standards
+- Documentation requirements
+- Review communication guidelines
 
-1. **ALWAYS** read all Memory Bank files before starting work
-2. Update `activeContext.md` before beginning new tasks
-3. Document all changes and insights immediately
-4. Follow session protocols defined in `.clinerules`
+### `.github/instructions/pr-description.instructions.md`
+- PR title formatting (emoji + Conventional Commits)
+- Description template structure
+- Review readiness checklist
+- Label and communication guidelines
 
-### For Human Developers
+## ⚙️ VS Code Settings
 
-1. Treat Memory Bank as single source of truth
-2. Update files when making significant changes
-3. Use cross-references to maintain consistency
-4. Contribute to project intelligence in `.clinerules`
+The `.vscode/settings.json` file configures:
 
-## Key Principles
+### Copilot Chat Integration
+```json
+{
+  "chat.promptFiles": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "chat.instructionsFilesLocations": ["./.github/instructions"],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "file": ".github/instructions/commit-message.instructions.md" }
+  ]
+}
+```
 
-**Memory Persistence:** Every session starts fresh - Memory Bank is the only continuity mechanism
+### Code Formatting
+- 2-space indentation
+- Prettier formatting on save
+- ESLint integration
+- TypeScript configuration
 
-**Self-Instruction:** Templates and documentation must be complete and actionable without external guidance
+### Development Environment
+- File associations
+- Git integration
+- Terminal configuration
+- Performance optimizations
 
-**Comprehensive Coverage:** All aspects of project context captured and maintained
+## 🧠 Memory Bank Integration
 
-**Quality Enforcement:** Hard requirements for Memory Bank synchronization before work begins
+This configuration integrates with the Memory Bank system:
 
-**Evolution Tracking:** Project changes and learnings continuously documented
+### Files Referenced
+- `memory-bank/systemPatterns.md` - Architecture patterns
+- `memory-bank/techContext.md` - Technology decisions
+- `memory-bank/activeContext.md` - Current work context
 
-## Contributing
+### How It Works
+1. **Code Generation**: References memory bank for project-specific patterns
+2. **Code Review**: Validates against documented architectural decisions
+3. **Documentation**: Updates memory bank files when new patterns are established
 
-When contributing to projects using this Memory Bank system:
+### Usage in Instructions
+Instructions include Memory Bank references:
+```markdown
+## Memory Bank Integration
 
-1. Read all Memory Bank files to understand current context
-2. Update relevant files with your changes and insights
-3. Maintain cross-references between related files
-4. Document new patterns or learnings in appropriate files
-5. Ensure `.clinerules` captures project-specific intelligence
+When working with this project:
+- Always check `memory-bank/` files for project-specific patterns
+- Update `memory-bank/techContext.md` when introducing new technologies
+- Document architectural decisions in `memory-bank/systemPatterns.md`
+```
 
-## License
+## 🔧 Troubleshooting
 
-This Memory Bank template system is designed for maximum reusability and adaptation to any project type.
+### Copilot Not Using Instructions
+
+1. **Check VS Code Version**: Ensure VS Code 1.99+
+2. **Verify Settings**: Confirm `.vscode/settings.json` is loaded
+3. **Restart VS Code**: Reload window after configuration changes
+4. **Check File Paths**: Ensure instruction files exist at specified paths
+
+### Emoji Not Appearing in Commits
+
+1. **Terminal Support**: Ensure your terminal supports Unicode
+2. **Git Configuration**: Check git config for commit message handling
+3. **Manual Override**: You can always copy/paste the suggested format
+
+### Instructions Not Applied
+
+1. **File Location**: Verify instruction files are in `.github/instructions/`
+2. **YAML Front Matter**: Check that `applyTo` patterns are correct
+3. **Copilot Chat**: Try asking specifically: "Use the commit message instructions"
+
+### Performance Issues
+
+1. **File Exclusions**: Update `files.exclude` in settings.json
+2. **Watcher Limits**: Configure `files.watcherExclude` for large projects
+3. **Extension Conflicts**: Disable conflicting extensions temporarily
+
+## 🤝 Contributing
+
+To extend or modify this configuration:
+
+1. **Update Instruction Files**: Modify `.github/instructions/*.md` files
+2. **Test Changes**: Reload VS Code and test with Copilot Chat
+3. **Update Documentation**: Keep this README in sync with changes
+4. **Memory Bank**: Document new patterns in appropriate memory bank files
+
+## 📝 License
+
+This configuration is provided as-is for educational and development purposes. Adapt as needed for your projects.
 
 ---
 
-**For AI Agents:** This README provides project overview, but you MUST read all Memory Bank files for complete context.
-The Memory Bank is your authoritative source for project understanding and work continuation.
+## 🎯 Next Steps
+
+1. **Customize Scopes**: Edit the scope list in `commit-message.instructions.md` for your project
+2. **Add Custom Rules**: Extend code-generation instructions for project-specific patterns
+3. **Team Adoption**: Share this configuration with your team for consistency
+4. **Continuous Improvement**: Refine instructions based on usage patterns
+
+Happy coding with GitHub Copilot! 🚀
