@@ -3,6 +3,7 @@
 # Usage: ./env-info.sh
 
 set -e
+set -o pipefail
 
 is_container() {
     if [ -f /.dockerenv ]; then
