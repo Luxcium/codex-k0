@@ -16,6 +16,7 @@
 2. Update .clinerules with Memory Bank usage patterns and project intelligence
 3. Verify all cross-references between Memory Bank files are accurate
 4. Ensure templates are fully self-instructive for any AI agent
+5. Add environment detection and markdown lint scripts for CI/CD readiness
 
 ## Recent Changes
 
@@ -28,6 +29,9 @@
 - `memory-bank/progress.md` - Project evolution and status template
 - `.clinerules` - Enhanced with Memory Bank implementation patterns
 - `README.md` - Comprehensive project overview and usage guidelines
+- `scripts/README.md` - Descriptions for environment and lint scripts
+- `scripts/env-info.sh` - Environment detection utility
+- `scripts/markdownlint.sh` - Markdown linting helper
 
 **Key Decisions Made:**
 - Memory Bank structure follows hierarchical dependency model (projectbrief → others → activeContext → progress)
@@ -80,6 +84,7 @@
 - All files follow self-instructive design principles
 - Templates ready for any AI agent to use immediately
 - Project intelligence patterns documented in .clinerules
+- Initial environment detection and markdown lint scripts added for CI/CD readiness
 - Comprehensive README provides clear onboarding and usage instructions
 - System ready for real-world project implementation
 
