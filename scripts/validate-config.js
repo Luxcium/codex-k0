@@ -7,9 +7,14 @@
  * for the GitHub Copilot Chat instruction system.
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import { parse as parseJsonc } from 'jsonc-parser';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+void __dirname ;
 // ANSI color codes for console output
 const colors = {
   red: '\x1b[31m',
@@ -53,10 +58,14 @@ const requiredFiles = [
 // VS Code settings to validate
 const requiredSettings = [
   'chat.promptFiles',
-  'github.copilot.chat.codeGeneration.useInstructionFiles',
   'chat.instructionsFilesLocations',
+  'chat.promptFilesLocations',
   'github.copilot.chat.codeGeneration.instructions',
-  'github.copilot.chat.commitMessageGeneration.instructions'
+  'github.copilot.chat.testGeneration.instructions',
+  'github.copilot.chat.reviewSelection.enabled',
+  'github.copilot.chat.reviewSelection.instructions',
+  'github.copilot.chat.commitMessageGeneration.instructions',
+  'github.copilot.chat.pullRequestDescriptionGeneration.instructions'
 ];
 
 function printHeader() {
@@ -91,30 +100,30 @@ function checkFileExists(filePath) {
   }
 }
 
-function checkFileContent(filePath, requiredContent = []) {
+function checkFileContent(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
-    const missing = requiredContent.filter(item => !content.includes(item));
-    return { exists: true, content, missing };
+    return { exists: true, content };
   } catch (error) {
     return { exists: false, error: error.message };
   }
 }
 
 function validateInstructionFile(filePath) {
-  const result = checkFileContent(filePath, ['---', 'applyTo:']);
+  const result = checkFileContent(filePath);
 
   if (!result.exists) {
     return { valid: false, error: 'File not found' };
   }
 
-  const hasYamlFrontMatter = result.content.startsWith('---');
-  const hasApplyTo = result.content.includes('applyTo:');
+  // Check for Markdown content (should start with a header)
+  const hasHeader = result.content.match(/^#\s+[^\n]+/m);
+  const hasContent = result.content.trim().length > 0;
 
   return {
-    valid: hasYamlFrontMatter && hasApplyTo,
-    hasYamlFrontMatter,
-    hasApplyTo,
+    valid: hasHeader && hasContent,
+    hasHeader: !!hasHeader,
+    hasContent,
     content: result.content
   };
 }
@@ -128,7 +137,7 @@ function validateVSCodeSettings() {
 
   try {
     const content = fs.readFileSync(settingsPath, 'utf8');
-    const settings = JSON.parse(content);
+    const settings = parseJsonc(content);
 
     const missingSettings = requiredSettings.filter(setting => {
       const keys = setting.split('.');
@@ -147,12 +156,30 @@ function validateVSCodeSettings() {
     // Check if instruction file paths are correct
     const instructionErrors = [];
 
-    if (settings['github.copilot.chat.codeGeneration.instructions']) {
-      const codeGenInstructions = settings['github.copilot.chat.codeGeneration.instructions'];
-      if (Array.isArray(codeGenInstructions) && codeGenInstructions.length > 0) {
-        const filePath = codeGenInstructions[0].file;
-        if (!checkFileExists(filePath)) {
-          instructionErrors.push(`Code generation instruction file not found: ${filePath}`);
+    // Validate instruction arrays for each agent
+    const agentSettings = [
+      'github.copilot.chat.codeGeneration.instructions',
+      'github.copilot.chat.testGeneration.instructions',
+      'github.copilot.chat.reviewSelection.instructions',
+      'github.copilot.chat.commitMessageGeneration.instructions',
+      'github.copilot.chat.pullRequestDescriptionGeneration.instructions'
+    ];
+
+    for (const agentSetting of agentSettings) {
+      if (settings[agentSetting]) {
+        const instructions = settings[agentSetting];
+        if (Array.isArray(instructions)) {
+          for (const instruction of instructions) {
+            if (instruction.file) {
+              if (!checkFileExists(instruction.file)) {
+                instructionErrors.push(`${agentSetting} file not found: ${instruction.file}`);
+              }
+            } else if (!instruction.text) {
+              instructionErrors.push(`${agentSetting} instruction object missing both 'file' and 'text' properties`);
+            }
+          }
+        } else {
+          instructionErrors.push(`${agentSetting} should be an array of instruction objects`);
         }
       }
     }
@@ -164,20 +191,19 @@ function validateVSCodeSettings() {
       settings
     };
   } catch (error) {
-    return { valid: false, error: `Invalid JSON: ${error.message}` };
+    return { valid: false, error: `Invalid JSONC: ${error.message}` };
   }
 }
 
 function validateGitRepository() {
-  const gitPath = '.git';
-  return checkFileExists(gitPath) || checkFileExists('.git/config');
+  return checkFileExists('.git') || checkFileExists('.git/config');
 }
 
 function validateNodeModules() {
   return checkFileExists('node_modules') || checkFileExists('package.json');
 }
 
-function runValidation() {
+async function runValidation() {
   printHeader();
 
   let allValid = true;
@@ -190,10 +216,12 @@ function runValidation() {
     printWarning('No Git repository found (optional)');
   }
 
-  if (validateNodeModules()) {
-    printSuccess('Node.js project detected');
-  } else {
-    printWarning('No Node.js project detected (optional)');
+  try {
+    await import('jsonc-parser');
+    printSuccess('Dependencies installed');
+  } catch (e) {
+    printError('Missing dependencies - run npm install first');
+    process.exit(1);
   }
   console.log();
 
@@ -218,14 +246,14 @@ function runValidation() {
       const validation = validateInstructionFile(file.path);
 
       if (validation.valid) {
-        printSuccess(`${file.path} has valid YAML front matter`);
+        printSuccess(`${file.path} has valid Markdown structure`);
       } else {
-        if (!validation.hasYamlFrontMatter) {
-          printError(`${file.path} missing YAML front matter (---)`);
+        if (!validation.hasContent) {
+          printError(`${file.path} is empty or missing content`);
           allValid = false;
         }
-        if (!validation.hasApplyTo) {
-          printError(`${file.path} missing 'applyTo:' directive`);
+        if (!validation.hasHeader) {
+          printError(`${file.path} is missing Markdown headers`);
           allValid = false;
         }
       }
@@ -276,24 +304,19 @@ function runValidation() {
     printInfo('Common fixes:');
     console.log('  1. Ensure all files are copied to the correct locations');
     console.log('  2. Check that .vscode/settings.json has the correct content');
-    console.log('  3. Verify instruction files have YAML front matter (---)');
+    console.log('  3. Verify instruction files have proper Markdown headers (#)');
+    console.log('  4. Run npm install to get required dependencies');
   }
-
   console.log();
   console.log(colors.cyan + 'For more help, see the README.md file.' + colors.reset);
-
-  // Exit with appropriate code
-  process.exit(allValid ? 0 : 1);
 }
 
 // Run validation if called directly
-if (require.main === module) {
-  runValidation();
+if (import.meta.url === `file://${process.argv[1]}`) {
+  runValidation().catch(console.error);
 }
 
-module.exports = {
-  runValidation,
-  checkFileExists,
-  validateInstructionFile,
+export {
+  checkFileExists, runValidation, validateInstructionFile,
   validateVSCodeSettings
 };

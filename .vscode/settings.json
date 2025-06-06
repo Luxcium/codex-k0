@@ -1,79 +1,87 @@
 {
-    // =====================================================
     // GitHub Copilot Chat Configuration
-    // =====================================================
-    // Enable prompt and instruction files support
     "chat.promptFiles": true,
-    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-    // Set locations for instruction and prompt files
-    "chat.instructionsFilesLocations": [
-        "./.github/instructions"
-    ],
-    "chat.promptFilesLocations": [
-        "./.github/prompts"
-    ],
-    // =====================================================
-    // Agent-Specific Instruction Files
-    // =====================================================
-    // Code Generation Instructions
-    "github.copilot.chat.codeGeneration.instructions": [
-        {
-            "file": ".github/instructions/code-generation.instructions.md"
-        }
-    ],
-    // Test Generation Instructions  
-    "github.copilot.chat.testGeneration.instructions": [
-        {
-            "file": ".github/instructions/test-generation.instructions.md"
-        }
-    ],
-    // Code Review Instructions
+    "chat.promptFilesLocations": {
+        ".github/prompts": true
+    },
+    "chat.instructionsFilesLocations": {
+        ".github/instructions": true
+    },
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+
+    // Agent-Specific Instructions
+    "github.copilot.chat.codeGeneration.instructions": [{
+        "file": ".github/instructions/code-generation.instructions.md"
+    }],
+    "github.copilot.chat.testGeneration.instructions": [{
+        "file": ".github/instructions/test-generation.instructions.md"
+    }],
     "github.copilot.chat.reviewSelection.enabled": true,
-    "github.copilot.chat.reviewSelection.instructions": [
-        {
-            "file": ".github/instructions/code-review.instructions.md"
-        }
-    ],
-    // Commit Message Generation Instructions (with Conventional Commits + Emojis)
-    "github.copilot.chat.commitMessageGeneration.instructions": [
-        {
-            "file": ".github/instructions/commit-message.instructions.md"
-        }
-    ],
-    // Pull Request Description Generation Instructions
-    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
-        {
-            "file": ".github/instructions/pr-description.instructions.md"
-        }
-    ],
-    // =====================================================
+    "github.copilot.chat.reviewSelection.instructions": [{
+        "file": ".github/instructions/code-review.instructions.md"
+    }],
+    "github.copilot.chat.commitMessageGeneration.instructions": [{
+        "file": ".github/instructions/commit-message.instructions.md"
+    }],
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [{
+        "file": ".github/instructions/pr-description.instructions.md"
+    }],
+
     // General Copilot Chat Settings
-    // =====================================================
-    // Enable Copilot Chat agents
     "chat.agent.enabled": true,
     "chat.agent.maxRequests": 15,
-    // =====================================================
-    // Editor and Formatting Settings
-    // =====================================================
-    // TypeScript/JavaScript formatting
+
+    // Editor Settings
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit",
         "source.organizeImports": "explicit"
     },
-    // Indentation settings (matching project conventions)
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
-    // Line endings and encoding
+    "editor.wordWrap": "off",
+    "editor.wordWrapColumn": 120,
+    "editor.minimap.enabled": true,
+    "editor.minimap.maxColumn": 120,
+    "editor.lineNumbers": "on",
+    "editor.rulers": [80, 120],
+    "editor.renderWhitespace": "boundary",
+    "editor.renderControlCharacters": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.suggestSelection": "first",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "on",
+
+    // Files and Encoding
     "files.eol": "\n",
     "files.encoding": "utf8",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    // =====================================================
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 2000,
+    "files.associations": {
+        "*.md": "markdown",
+        "*.json": "jsonc",
+        ".clinerules": "plaintext",
+        ".gitignore": "ignore",
+        ".markdownlintrc": "json",
+        ".prettierrc": "json"
+    },
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.log": true,
+        "**/coverage": true
+    },
+
     // Language-Specific Settings
-    // =====================================================
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.tabSize": 2,
@@ -112,59 +120,21 @@
             "other": "off"
         }
     },
-    // =====================================================
-    // Git and Version Control Settings
-    // =====================================================
-    // Git configuration
+
+    // Git and Version Control
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "git.autofetch": true,
-    "git.defaultCloneDirectory": "../",
-    // GitLens configuration (if installed)
     "gitlens.codeLens.enabled": true,
     "gitlens.currentLine.enabled": true,
     "gitlens.hovers.enabled": true,
-    // =====================================================
-    // Terminal and Shell Settings
-    // =====================================================
+
+    // Terminal Settings
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.cursorBlinking": true,
-    // =====================================================
-    // File Explorer and Workspace Settings
-    // =====================================================
-    // File associations
-    "files.associations": {
-        "*.md": "markdown",
-        "*.json": "jsonc",
-        ".clinerules": "plaintext",
-        ".gitignore": "ignore",
-        ".markdownlintrc": "json",
-        ".prettierrc": "json"
-    },
-    // Files to exclude from explorer and search
-    "files.exclude": {
-        "**/node_modules": true,
-        "**/dist": true,
-        "**/build": true,
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/*.log": true,
-        "**/coverage": true
-    },
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/dist": true,
-        "**/build": true,
-        "**/coverage": true,
-        "**/*.min.js": true,
-        "**/*.min.css": true
-    },
-    // =====================================================
-    // Extension-Specific Settings
-    // =====================================================
-    // ESLint configuration
+
+    // Extension Settings
     "eslint.validate": [
         "javascript",
         "javascriptreact",
@@ -172,90 +142,15 @@
         "typescriptreact"
     ],
     "eslint.format.enable": true,
-    // Prettier configuration
     "prettier.enable": true,
     "prettier.requireConfig": true,
     "prettier.useEditorConfig": false,
-    // TypeScript configuration
     "typescript.updateImportsOnFileMove.enabled": "always",
     "typescript.suggest.autoImports": true,
-    "typescript.preferences.renameShorthandProperties": false,
     "typescript.suggest.completeFunctionCalls": true,
-    // IntelliSense configuration
-    "editor.suggestSelection": "first",
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.acceptSuggestionOnEnter": "on",
-    // =====================================================
-    // Memory Bank Integration Settings
-    // =====================================================
-    // Auto-save to help maintain memory bank files
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 2000,
-    // Highlight memory bank files in explorer
-    "explorer.decorations.badges": true,
-    "explorer.decorations.colors": true,
-    // =====================================================
-    // Development Environment Settings
-    // =====================================================
-    // Enable bracket pair colorization
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": "active",
-    // Enable minimap for large files
-    "editor.minimap.enabled": true,
-    "editor.minimap.maxColumn": 120,
-    // Line numbers and ruler
-    "editor.lineNumbers": "on",
-    "editor.rulers": [
-        80,
-        120
-    ],
-    // Word wrap settings
-    "editor.wordWrap": "off",
-    "editor.wordWrapColumn": 120,
-    // Whitespace rendering
-    "editor.renderWhitespace": "boundary",
-    "editor.renderControlCharacters": true,
-    // =====================================================
-    // Performance and Resource Settings
-    // =====================================================
-    // File watcher settings for large projects
-    "files.watcherExclude": {
-        "**/node_modules/**": true,
-        "**/dist/**": true,
-        "**/build/**": true,
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/coverage/**": true
-    },
-    // Memory settings
     "typescript.tsc.autoDetect": "on",
     "javascript.suggest.autoImports": true,
-    // =====================================================
-    // Security and Privacy Settings
-    // =====================================================
-    // Telemetry and data collection
-    "telemetry.telemetryLevel": "error",
-    // Extension recommendations
-    "extensions.ignoreRecommendations": false,
-    "extensions.showRecommendationsOnlyOnDemand": false,
-    // =====================================================
-    // Project-Specific Overrides
-    // =====================================================
-    // Conventional Commits enforcement
-    "conventionalCommits.scopes": [
-        "ui",
-        "api",
-        "auth",
-        "db",
-        "config",
-        "deps",
-        "ci",
-        "docs",
-        "test",
-        "build",
-        "deploy"
-    ],
-    // Project structure awareness
+
+
     "typescript.preferences.includePackageJsonAutoImports": "auto",
-    "javascript.preferences.includePackageJsonAutoImports": "auto"
 }

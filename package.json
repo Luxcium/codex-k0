@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "VS Code GitHub Copilot configuration with Conventional Commits and emoji support",
   "main": "scripts/validate-config.js",
+  "type": "module",
   "scripts": {
     "validate": "node scripts/validate-config.js",
     "check": "node scripts/validate-config.js",
     "test-config": "node scripts/validate-config.js"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.2.0"
   },
   "keywords": [
     "vscode",
