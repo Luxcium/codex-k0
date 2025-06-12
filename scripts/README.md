@@ -208,6 +208,8 @@ details such as the kernel version, base operating system, user, and
 working directory. This helps validate the runtime context during each
 lifecycle phase and is useful for troubleshooting or for CI/CD pipelines
 that need to capture environment metadata.
+### genesis.sh
+`genesis.sh` performs the minimal boot-phase setup. It installs dependencies if `node_modules` is missing, detects container environment, and reports git status.
 
 ---
 
